@@ -1,8 +1,8 @@
 import React from 'react'
-import NavBar from './NavBar'
+import Sidebar from "../Components/Sidebar"
 
 export default function Coverpage() {
   return (
-   <NavBar />
+   <Sidebar />
   )
 }
