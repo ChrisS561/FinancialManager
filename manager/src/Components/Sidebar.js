@@ -72,7 +72,7 @@ export default function Sidebar() {
                             <NavText>Earnings</NavText>
                             </NavItem>
                     </NavItem>
-                    <NavItem eventKey="/profile">
+                    <NavItem eventKey="/">
                         <NavIcon>
                         <FontAwesomeIcon icon={faUser} style={{fontSize:"1.75em"}} />
                         </NavIcon>

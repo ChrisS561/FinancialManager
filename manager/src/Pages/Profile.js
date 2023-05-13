@@ -58,7 +58,7 @@ export default function Login() {
 
   return (
     <div style={backgroundStyle}>
-      <Card style={cardStyle}>
+      <Card style={cardStyle}> 
         <h2 className="text-center mb-4">Log In</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>

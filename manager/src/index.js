@@ -11,6 +11,7 @@ import Chart from "./Pages/Chart";
 import Income from "./Pages/Income";
 import Profile from "./Pages/Profile";
 import Settings from "./Pages/Settings";
+import Signup from "./Pages/Signup";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,8 +24,9 @@ root.render(
         <Route path="/budget" element={<Budget />} />
         <Route path="/chart" element={<Chart />} />
         <Route path="/income" element={<Income/>} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/signup" element={<Signup />} />
 
 			</Routes>
 		</Router>
