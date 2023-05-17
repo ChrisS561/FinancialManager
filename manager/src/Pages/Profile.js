@@ -18,11 +18,12 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log( emailRef.current.value, passwordRef.current.value)
 
     try {
       setError("");
       setLoading(true);
-      navigate("/home");
+      // navigate("/home");
     } catch {
       setError("Failed to log in");
     }
