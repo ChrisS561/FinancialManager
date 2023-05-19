@@ -1,7 +1,5 @@
 import React from "react";
 import SideNav, {
-	Toggle,
-	Nav,
 	NavItem,
 	NavIcon,
 	NavText,
@@ -14,10 +12,25 @@ import { faHandHoldingDollar } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
+// import { useState } from "react";
 import "../Components/ComponentsCSS/Sidebar.css";
+import { useAuth } from "../Context/AuthContext";
 
-export default function Sidebar() {
+export default function SignedInSidebar() {
 	const navigate = useNavigate();
+	// const [error, setError] = useState("");
+	const {logout} = useAuth()
+
+	async function handleLogout() {
+		// setError(" ");
+
+		try {
+			await logout();
+			navigate("/");
+		} catch {
+			// setError("Fail to logout");
+		}
+	}
 	return (
 		<div>
 			<SideNav
@@ -74,11 +87,17 @@ export default function Sidebar() {
 							<NavText>Earnings</NavText>
 						</NavItem>
 					</NavItem>
-					<NavItem eventKey="/">
+					<NavItem eventKey="/login">
 						<NavIcon>
 							<FontAwesomeIcon icon={faUser} style={{ fontSize: "1.75em" }} />
 						</NavIcon>
-						<NavText>Profile</NavText>
+						<NavText>Account</NavText>
+						<NavItem eventKey="/updateProfile">
+							<NavText>Profile</NavText>
+						</NavItem>
+						<NavItem eventKey="/signout">
+							<NavText onClick={handleLogout}>Signout</NavText>
+						</NavItem>
 					</NavItem>
 					<NavItem eventKey="/settings">
 						<NavIcon>

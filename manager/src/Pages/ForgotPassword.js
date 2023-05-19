@@ -1,24 +1,19 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Pages/PagesCSS/Profile.css";
 import background from "../Images/Signup.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../Context/AuthContext";
-import { auth } from "../Context/Firebase";
-import {FaGoogle} from "react-icons/fa"
 
-export default function Signup() {
+export default function ForgotPassword() {
 	const emailRef = useRef();
-	const passwordRef = useRef();
-	const user = auth.currentUser;
-	const { login, signInWithGoogle } = useAuth();
+	const { resetPassword } = useAuth();
 	const [error, setError] = useState("");
+	const [message, setMessage] = useState(" ");
 	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate();
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -26,10 +21,10 @@ export default function Signup() {
 		try {
 			setError("");
 			setLoading(true);
-			await login(emailRef.current.value, passwordRef.current.value);
-			navigate("/home");
+			await resetPassword(emailRef.current.value);
+			setMessage("Check you inbox for further instructions");
 		} catch {
-			setError("The password is invalid or the user does not have a password.");
+			setError("There is no user record corresponding to this identifier.");
 		}
 		setLoading(false);
 	}
@@ -60,37 +55,12 @@ export default function Signup() {
 		fontWeight: "bold",
 	};
 
-	const googleButtonStyle = {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: '10px 20px',
-		border: 'none',
-		borderRadius: '5px',
-		backgroundColor: '#ffffff',
-		boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
-		cursor: 'pointer',
-	  };
-	  
-	  const googleButtonTextStyle = {
-		marginLeft: '10px',
-		fontSize: '14px',
-		fontWeight: 'bold',
-		color: '#757575',
-	  };
-	  const GoogleLoginButton = ({ onClick }) => {
-		return (
-		  <button style={googleButtonStyle} onClick={onClick}>
-			<FaGoogle size={20} />
-			<span style={googleButtonTextStyle}>Sign in with Google</span>
-		  </button>
-		);
-	  };
 	return (
 		<div style={backgroundStyle}>
 			<Card style={cardStyle}>
-				<h2 className="text-center mb-4">Log In</h2>
+				<h2 className="text-center mb-4">Forgot Password</h2>
 				{error && <Alert variant="danger">{error}</Alert>}
+				{message && <Alert variant="success">{message}</Alert>}
 				<Form onSubmit={handleSubmit}>
 					<Form.Group id="email">
 						<Form.Label style={labelStyle}>Email</Form.Label>
@@ -102,29 +72,18 @@ export default function Signup() {
 						/>
 						<FontAwesomeIcon className="i" icon={faUser} />
 					</Form.Group>
-					<Form.Group id="password">
-						<Form.Label style={labelStyle}>Password</Form.Label>
-						<Form.Control
-							type="password"
-							ref={passwordRef}
-							required
-							style={{ paddingLeft: "1.5rem" }}
-						/>
-						<FontAwesomeIcon className="i" icon={faLock} />
-					</Form.Group>
-					<GoogleLoginButton disabled={loading} onClick={signInWithGoogle} />
 					<Button
 						disabled={loading}
 						className="w-100 mt-4"
 						type="submit"
 						variant="success"
 					>
-						Log In
+						Reset Password
 					</Button>
 				</Form>
 				<div className="w-100 text-center mt-4 ">
-					<Link to="/forgot-password" style={{ color: "white" }}>
-						Forgot Password?
+					<Link to="/" style={{ color: "white" }}>
+						Login
 					</Link>
 				</div>
 				<div className="w-100 text-center mt-4">
