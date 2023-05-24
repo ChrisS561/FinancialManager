@@ -8,13 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../Context/AuthContext";
-import { auth } from "../Context/Firebase";
 import {FaGoogle} from "react-icons/fa"
 
 export default function Signup() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
-	const user = auth.currentUser;
 	const { login, signInWithGoogle } = useAuth();
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -64,12 +62,13 @@ export default function Signup() {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		padding: '10px 20px',
+		padding: '5px 10px',
 		border: 'none',
 		borderRadius: '5px',
 		backgroundColor: '#ffffff',
 		boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
 		cursor: 'pointer',
+		color: "red", 
 	  };
 	  
 	  const googleButtonTextStyle = {

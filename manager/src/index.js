@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./Pages/Home";
-import Tracking from "./Pages/Tracking";
-import Budget from "./Pages/Budget";
 import Chart from "./Pages/Chart";
 import Income from "./Pages/Income";
 import Profile from "./Pages/Profile";
@@ -18,6 +16,8 @@ import PrivateRoute from "./Secure/PrivateRoute";
 import PrivateRoute2 from "./Secure/PrivateRoute2";
 import ForgotPassword from "./Pages/ForgotPassword";
 import UpdateProfile from "./Pages/UpdateProfile";
+import Tracking from "./Pages/Expenses/Tracking";
+import Budget from "./Pages/SpendingPlan/Budget"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,8 +27,8 @@ root.render(
 				<SideBarAuth />
 				<Routes>
 					<Route path="/home" element={<Home />} />
-					<Route path="/tracking" element={<Tracking />} />
-					<Route path="/budget" element={<Budget />} />
+					<Route path="/tracking" element={<PrivateRoute> <Tracking/> </PrivateRoute>} />
+					<Route path="/budget" element={<PrivateRoute> <Budget/> </PrivateRoute>} />
 					<Route path="/chart" element={<Chart />} />
 					<Route path="/income" element={<Income />} />
 					<Route path="/" element={<PrivateRoute2> <Profile/> </PrivateRoute2>} />
