@@ -1,5 +1,6 @@
 import React from "react";
 import Test from "./Test";
+import NewExpense from "./NewExpense/NewExpense";
 
 export default function Tracking() {
 	const Data = [
@@ -29,6 +30,7 @@ export default function Tracking() {
 		<h1 style={{textAlign: "center"}}>
 			Tracking
 			<div>
+				<NewExpense/>
 				<Test items={Data} />
 			</div>
 		</h1>
