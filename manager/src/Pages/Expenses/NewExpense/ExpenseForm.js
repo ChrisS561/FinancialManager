@@ -11,23 +11,32 @@ export default function ExpenseForm() {
 	const [amount, setAmount] = useState(0);
 	const [new_date, setDate] = useState(' ');
 
-    console.log(firstName)
-    console.log(amount)
-    console.log(new_date)
+	console.log(firstName);
+	console.log(amount);
+	console.log(new_date);
 
 	const nameChangeHandler = (e) => {
 		setfirstName(e.target.value);
 	};
 	const amountChangeHanlder = (e) => {
 		setAmount(e.target.value);
-
 	};
 	const dateChangeHandler = (e) => {
 		setDate(e.target.value);
 	};
 
+	const submitHandler = (event) => {
+		event.preventDefault();
+		const expenses = {
+			title: firstName,
+			amount: amount,
+			date: new Date(new_date),
+		};
+		console.log(expenses);
+	};
+
 	return (
-		<form>
+		<form onSubmit={submitHandler}>
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Title</label>
@@ -47,8 +56,8 @@ export default function ExpenseForm() {
 						className="new-expense__input"
 						min={min_num}
 						step={min_step}
-                        onChange={amountChangeHanlder}
-                        value={amount}
+						onChange={amountChangeHanlder}
+						value={amount}
 					/>
 				</div>
 			</div>
@@ -60,8 +69,8 @@ export default function ExpenseForm() {
 						className="new-expense__input"
 						min={min_date}
 						max={max_date}
-                        onChange={dateChangeHandler}
-                        value={new_date}
+						onChange={dateChangeHandler}
+						value={new_date}
 					/>
 				</div>
 			</div>
@@ -70,4 +79,3 @@ export default function ExpenseForm() {
 		</form>
 	);
 }
-
