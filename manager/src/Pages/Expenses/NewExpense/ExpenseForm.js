@@ -33,6 +33,10 @@ export default function ExpenseForm() {
 			date: new Date(new_date),
 		};
 		console.log(expenses);
+		//Allows to reset the input after the form has been submitted. 
+		setfirstName(""); 
+		setAmount(0);
+		setDate("");
 	};
 
 	return (
