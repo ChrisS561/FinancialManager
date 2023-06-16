@@ -25,12 +25,16 @@ export default function Tracking() {
 		},
 	];
 	
+	const addExpenseHandler = (expense) => { 
+		console.log(expense)
+		console.log("Tracking")
+	}
 
 	return (
 		<h1 style={{textAlign: "center"}}>
 			Tracking
 			<div>
-				<NewExpense/>
+				<NewExpense onAddExpense={addExpenseHandler}/>
 				<Test items={Data} />
 			</div>
 		</h1>

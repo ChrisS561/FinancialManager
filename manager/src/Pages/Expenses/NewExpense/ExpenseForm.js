@@ -1,42 +1,39 @@
 import React, { useState } from 'react';
 import '../ExpensesCSS/ExpenseForm.css';
 
-export default function ExpenseForm() {
+export default function ExpenseForm(props) {
 	const min_num = '0.01';
 	const min_step = '0.01';
 	const min_date = '2019-01-01';
 	const max_date = '2030-12-31';
 
-	const [firstName, setfirstName] = useState(' ');
+	const [firstName, setFirstName] = useState('');
 	const [amount, setAmount] = useState(0);
-	const [new_date, setDate] = useState(' ');
-
-	console.log(firstName);
-	console.log(amount);
-	console.log(new_date);
+	const [newDate, setDate] = useState('');
 
 	const nameChangeHandler = (e) => {
-		setfirstName(e.target.value);
+		setFirstName(e.target.value);
 	};
-	const amountChangeHanlder = (e) => {
+
+	const amountChangeHandler = (e) => {
 		setAmount(e.target.value);
 	};
+
 	const dateChangeHandler = (e) => {
 		setDate(e.target.value);
 	};
 
 	const submitHandler = (event) => {
 		event.preventDefault();
-		const expenses = {
+		const expense = {
 			title: firstName,
 			amount: amount,
-			date: new Date(new_date),
+			date: new Date(newDate),
 		};
-		console.log(expenses);
-		//Allows to reset the input after the form has been submitted. 
-		setfirstName(""); 
+		props.onSaveExpenseData(expense);
+		setFirstName('');
 		setAmount(0);
-		setDate("");
+		setDate('');
 	};
 
 	return (
@@ -51,8 +48,6 @@ export default function ExpenseForm() {
 						value={firstName}
 					/>
 				</div>
-			</div>
-			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Amount</label>
 					<input
@@ -60,12 +55,10 @@ export default function ExpenseForm() {
 						className="new-expense__input"
 						min={min_num}
 						step={min_step}
-						onChange={amountChangeHanlder}
+						onChange={amountChangeHandler}
 						value={amount}
 					/>
 				</div>
-			</div>
-			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Date</label>
 					<input
@@ -74,12 +67,13 @@ export default function ExpenseForm() {
 						min={min_date}
 						max={max_date}
 						onChange={dateChangeHandler}
-						value={new_date}
+						value={newDate}
 					/>
 				</div>
 			</div>
-			<div className="new-expense__actions"></div>
-			<button type="submit">Add Expenses</button>
+			<div className="new-expense__actions">
+				<button type="submit">Add Expense</button>
+			</div>
 		</form>
 	);
 }

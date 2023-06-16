@@ -1,32 +1,32 @@
-import React from 'react'
-import Expenses from "./Expenses" 
-import "./ExpensesCSS/Test.css"
-
-
+import React, { useState } from 'react';
+import Expenses from './Expenses';
+import './ExpensesCSS/Test.css';
+import ExpensesFilter from './NewExpense/ExpensesFilter';
 
 export default function Test(props) {
-  return (
-    <div className='expenses'>
-    <Expenses
-    title={props.items[0].title}
-    amount={props.items[0].amount}
-    date={props.items[0].date}
-    />
-    <Expenses
-    title={props.items[1].title}
-    amount={props.items[1].amount}
-    date={props.items[1].date}
-    />
-    <Expenses
-    title={props.items[2].title}
-    amount={props.items[2].amount}
-    date={props.items[2].date}
-    />
-     <Expenses
-    title={props.items[3].title}
-    amount={props.items[3].amount}
-    date={props.items[3].date}
-    />
-    </div>
-  )
+	const [filteredYear, setFilteredYear] = useState('');
+
+	const filteredYearHandler = (data) => {
+		console.log(data);
+		setFilteredYear(data);
+	};
+
+	return (
+		<div>
+			<div className="expenses">
+				<ExpensesFilter
+					selected={filteredYear}
+					onFilteredChange={filteredYearHandler}
+				/>
+				{props.items.map((expense) => (
+					<Expenses
+						key={expense.id}
+						title={expense.title}
+						amount={expense.amount}
+						date={expense.date} // Fix typo here
+					/>
+				))}
+			</div>
+		</div>
+	);
 }
