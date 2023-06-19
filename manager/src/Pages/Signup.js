@@ -1,22 +1,22 @@
-import React from "react";
-import "./PagesCSS/Signup.css";
-import background from "../Images/log.jpg";
-import { Form, Button, Card, Alert } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
-import { useAuth } from "../Context/AuthContext";
+import React from 'react';
+import './PagesCSS/Signup.css';
+import background from '../Images/log.jpg';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { useAuth } from '../Context/AuthContext';
 
 // import "bootstrap/dist/css/bootstrap.min.css"
 
 const sectionStyle = {
 	backgroundImage: `url(${background})`,
-	backgroundSize: "cover",
-	backgroundPosition: "center",
-	height: "100vh",
-	width: "100vw",
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
+	backgroundSize: 'cover',
+	backgroundPosition: 'center',
+	height: '100vh',
+	width: '100vw',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
 };
 
 export default function Signup() {
@@ -27,44 +27,42 @@ export default function Signup() {
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
 	const { signup } = useAuth();
-	const [error, setError] = useState("");
+	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate(); 
+	const navigate = useNavigate();
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 
 		if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-			return setError("Passwords do not match");
+			return setError('Passwords do not match');
 		}
 
 		try {
-			setError("");
+			setError('');
 			setLoading(true);
 			await signup(emailRef.current.value, passwordRef.current.value);
 			// Redirect or navigate to the desired page
-			navigate("/");
-
+			navigate('/');
 		} catch {
-			setError("The email address is already in use by another account. ");
+			setError('The email address is already in use by another account. ');
 			setLoading(false);
 		}
 	}
-	console.log(firstNameRef)
-	
+	console.log(firstNameRef);
 
 	const cardStyle = {
-		backgroundColor: "transparent",
-		border: "none",
-		width: "20%",
-		height: "50%",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
+		backgroundColor: 'transparent',
+		border: 'none',
+		width: '20%',
+		height: '50%',
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
 	};
 
 	const labelStyle = {
-		fontWeight: "bold",
+		fontWeight: 'bold',
 	};
 
 	return (
@@ -135,8 +133,8 @@ export default function Signup() {
 					</Button>
 				</Form>
 				<div className="w-100 text-center mt-4">
-					Already a member?{" "}
-					<Link to="/" style={{ color: "white" }}>
+					Already a member?{' '}
+					<Link to="/" style={{ color: 'white' }}>
 						Log in
 					</Link>
 				</div>
