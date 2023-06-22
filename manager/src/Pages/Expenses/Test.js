@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Expenses from './Expenses';
 import './ExpensesCSS/Test.css';
 import ExpensesFilter from './NewExpense/ExpensesFilter';
+import ExpensesChart from './ExpensesChart';
 
 export default function Test(props) {
 	// State for filtered year
@@ -18,6 +19,18 @@ export default function Test(props) {
 		return expense.date.getFullYear().toString() === filteredYear;
 	});
 
+	let contentExpenses = <p>No Expenses Found</p>;
+	if (filteredExpenses.length > 0) {
+		contentExpenses = filteredExpenses.map((expense) => (
+			<Expenses
+				key={expense.id}
+				title={expense.title}
+				amount={expense.amount}
+				date={expense.date}
+			/>
+		));
+	}
+
 	return (
 		<div>
 			<div className="expenses">
@@ -26,16 +39,9 @@ export default function Test(props) {
 					selected={filteredYear}
 					onFilteredChange={filteredYearHandler}
 				/>
-
+				{/* <ExpensesChart expense={filteredExpenses}/> */}
 				{/* Map over the filtered expenses and render Expenses component */}
-				{filteredExpenses.map((expense) => (
-					<Expenses
-						key={expense.id}
-						title={expense.title}
-						amount={expense.amount}
-						date={expense.date}
-					/>
-				))}
+				{contentExpenses}
 			</div>
 		</div>
 	);
