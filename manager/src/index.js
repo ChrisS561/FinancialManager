@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./Pages/Home";
-import Chart from "./Pages/Chart";
+import Investment from "./Pages/Investment"
 import Income from "./Pages/Income";
 import Profile from "./Pages/Profile";
 import Settings from "./Pages/Settings";
@@ -29,7 +29,7 @@ root.render(
 					<Route path="/home" element={<Home />} />
 					<Route path="/tracking" element={<PrivateRoute> <Tracking/> </PrivateRoute>} />
 					<Route path="/budget" element={<PrivateRoute> <Budget/> </PrivateRoute>} />
-					<Route path="/chart" element={<Chart />} />
+					<Route path="/investment" element={<Investment />} />
 					<Route path="/income" element={<Income />} />
 					<Route path="/" element={<PrivateRoute2> <Profile/> </PrivateRoute2>} />
 					<Route path="/settings" element={<Settings />} />

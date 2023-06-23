@@ -71,8 +71,8 @@ export default function SignedInSidebar() {
 						<NavItem eventKey="/budget">
 							<NavText>Budget</NavText>
 						</NavItem>
-						<NavItem eventKey="/chart">
-							<NavText>Pie Chart</NavText>
+						<NavItem eventKey="/investment">
+							<NavText>Investment</NavText>
 						</NavItem>
 					</NavItem>
 					<NavItem eventKey="salary">
