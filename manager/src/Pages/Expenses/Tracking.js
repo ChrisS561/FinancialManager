@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Test from './Test';
-import NewExpense from './NewExpense/NewExpense';
-import { Data } from '../../Library/Expenses';
+import NewExpense from '../NewExpense/NewExpense';
+import { Data } from '../../Library/ExpensesData';
 
 export default function Tracking() {
 	// State for expenses
@@ -16,7 +16,7 @@ export default function Tracking() {
 
 	return (
 		<h1 style={{ textAlign: 'center' }}>
-			Tracking
+			Expenses
 			<div>
 				{/* NewExpense component */}
 				<NewExpense onAddExpense={addExpenseHandler} />
@@ -27,3 +27,5 @@ export default function Tracking() {
 		</h1>
 	);
 }
+
+//https://www.youtube.com/watch?v=Rh3tobg7hEo this shows how to remove the expenses

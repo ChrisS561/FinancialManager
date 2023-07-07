@@ -1,21 +1,22 @@
 .new-expense {
-    background-color: #a892ee;
-    padding: 1rem;
-    margin: 2rem auto;
-    width: 50rem;
-    max-width: 95%;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-  }
-  
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
 .new-expense button {
   font: inherit;
+  font-size: large;
   cursor: pointer;
   padding: 1.2rem 2.5rem;
   /* Adjust the padding as needed */
   border: none;
-  background-color: #40005d;
+  background-color: #333333;
   color: white;
   border-radius: 12px;
   margin-right: 1rem;
@@ -24,19 +25,19 @@
 
 .new-expense button:hover,
 .new-expense button:active {
-  background-color: #510674;
+  background-color: #4F4F4F;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .new-expense button.alternative {
-  color: #40005d;
+  color: #333333;
   background-color: transparent;
-  border: 1px solid #40005d;
+  border: 1px solid #333333;
 }
 
 .new-expense button.alternative:hover,
 .new-expense button.alternative:active {
-  background-color: #ddb3f8;
-  border-color: #ddb3f8;
-  color: #40005d;
+  background-color: #F0F0F0;
+  border-color: #F0F0F0;
+  color: #333333;
 }

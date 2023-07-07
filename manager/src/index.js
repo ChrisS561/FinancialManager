@@ -17,7 +17,7 @@ import PrivateRoute2 from "./Secure/PrivateRoute2";
 import ForgotPassword from "./Pages/ForgotPassword";
 import UpdateProfile from "./Pages/UpdateProfile";
 import Tracking from "./Pages/Expenses/Tracking";
-import Budget from "./Pages/SpendingPlan/Budget"
+import Budget from "./Pages/Budget/Budget"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

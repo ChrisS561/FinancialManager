@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Expenses from './Expenses';
 import './ExpensesCSS/Test.css';
-import ExpensesFilter from './NewExpense/ExpensesFilter';
-import ExpensesChart from './ExpensesChart';
+import ExpensesFilter from '../NewExpense/ExpensesFilter';
 
 export default function Test(props) {
 	// State for filtered year

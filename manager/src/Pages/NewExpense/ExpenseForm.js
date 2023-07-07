@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../ExpensesCSS/ExpenseForm.css';
+import '../Expenses/ExpensesCSS/ExpenseForm.css';
 
 export default function ExpenseForm(props) {
 	const min_num = '0.01';
