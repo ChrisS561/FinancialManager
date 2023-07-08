@@ -1,20 +1,26 @@
-import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import "../Pages/PagesCSS/Profile.css";
-import background from "../Images/Signup.jpg";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "../Context/AuthContext";
-import {FaGoogle} from "react-icons/fa"
+import React, { useRef, useState } from 'react';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import '../Pages/PagesCSS/Profile.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../Context/AuthContext';
+import { FaGoogle } from 'react-icons/fa';
+import {
+	backgroundStyle,
+	cardStylePro,
+	labelStyle,
+	googleButtonStyle,
+	googleButtonTextStyle,
+} from '../Library/styling';
 
 export default function Signup() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const { login, signInWithGoogle } = useAuth();
-	const [error, setError] = useState("");
+	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
@@ -22,72 +28,27 @@ export default function Signup() {
 		e.preventDefault();
 
 		try {
-			setError("");
+			setError('');
 			setLoading(true);
 			await login(emailRef.current.value, passwordRef.current.value);
-			navigate("/home");
+			navigate('/home');
 		} catch {
-			setError("The password is invalid or the user does not have a password.");
+			setError('The password is invalid or the user does not have a password.');
 		}
 		setLoading(false);
 	}
 
-	const backgroundStyle = {
-		backgroundImage: `url(${background})`,
-		backgroundSize: "cover",
-		backgroundPosition: "center",
-		height: "100vh",
-		width: "100vw",
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "rgba(0, 0, 0, 0.4)",
-	};
-
-	const cardStyle = {
-		backgroundColor: "transparent",
-		border: "none",
-		width: "20%",
-		height: "50%",
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-	};
-
-	const labelStyle = {
-		fontWeight: "bold",
-	};
-
-	const googleButtonStyle = {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: '5px 10px',
-		border: 'none',
-		borderRadius: '5px',
-		backgroundColor: '#ffffff',
-		boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
-		cursor: 'pointer',
-		color: "red", 
-	  };
-	  
-	  const googleButtonTextStyle = {
-		marginLeft: '10px',
-		fontSize: '14px',
-		fontWeight: 'bold',
-		color: '#757575',
-	  };
-	  const GoogleLoginButton = ({ onClick }) => {
+	const GoogleLoginButton = ({ onClick }) => {
 		return (
-		  <button style={googleButtonStyle} onClick={onClick}>
-			<FaGoogle size={20} />
-			<span style={googleButtonTextStyle}>Sign in with Google</span>
-		  </button>
+			<button style={googleButtonStyle} onClick={onClick}>
+				<FaGoogle size={20} />
+				<span style={googleButtonTextStyle}>Sign in with Google</span>
+			</button>
 		);
-	  };
+	};
 	return (
 		<div style={backgroundStyle}>
-			<Card style={cardStyle}>
+			<Card style={cardStylePro}>
 				<h2 className="text-center mb-4">Log In</h2>
 				{error && <Alert variant="danger">{error}</Alert>}
 				<Form onSubmit={handleSubmit}>
@@ -97,7 +58,7 @@ export default function Signup() {
 							type="email"
 							ref={emailRef}
 							required
-							style={{ paddingLeft: "1.5rem" }}
+							style={{ paddingLeft: '1.5rem' }}
 						/>
 						<FontAwesomeIcon className="i" icon={faUser} />
 					</Form.Group>
@@ -107,7 +68,7 @@ export default function Signup() {
 							type="password"
 							ref={passwordRef}
 							required
-							style={{ paddingLeft: "1.5rem" }}
+							style={{ paddingLeft: '1.5rem' }}
 						/>
 						<FontAwesomeIcon className="i" icon={faLock} />
 					</Form.Group>
@@ -122,13 +83,13 @@ export default function Signup() {
 					</Button>
 				</Form>
 				<div className="w-100 text-center mt-4 ">
-					<Link to="/forgot-password" style={{ color: "white" }}>
+					<Link to="/forgot-password" style={{ color: 'white' }}>
 						Forgot Password?
 					</Link>
 				</div>
 				<div className="w-100 text-center mt-4">
-					Don't have an account?{" "}
-					<Link to="/signup" style={{ color: "white" }}>
+					Don't have an account?{' '}
+					<Link to="/signup" style={{ color: 'white' }}>
 						Sign Up
 					</Link>
 				</div>
